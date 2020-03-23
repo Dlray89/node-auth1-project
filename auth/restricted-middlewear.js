@@ -4,4 +4,5 @@ module.exports = (req,res,next) => {
     } else {
         res.status(401).json({You: "shall not pass"})
     }
+    console.log("session", session)
 }
