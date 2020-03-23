@@ -4,16 +4,16 @@ const morgan = require("morgan")
 const cors = require("cors")
 
 
-// const userRouter = require("./router/users")
+const userRouter = require("./router/users")
+const authRouter = require("./auth/auth.router")
+
 const server = express()
-
-
-
 server.use(helmet())
 server.use(morgan("dev"))
-server.use(cors())
-// server.use("/api/users", userRouter)
 server.use(express.json())
+server.use(cors())
+server.use("/api/users", userRouter)
+server.use("/api/auth", authRouter)
 
 
 server.get("/", (req,res) => {

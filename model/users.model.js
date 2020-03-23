@@ -1,4 +1,4 @@
-
+const usersDB = require("../data/db.config")
 
 module.exports = {
     find,
@@ -8,13 +8,16 @@ module.exports = {
 }
 
 function find(){
-
+return usersDB("users").select("id"," username")
 }
 
-function findBy(){
-    
+function findBy(filter){
+    return usersDB("users").where(filter)
 }
-function findById(){
+function findById(id){
+    return usersDB("users")
+    .where({ id })
+    .first()
     
 }
 function add(){
