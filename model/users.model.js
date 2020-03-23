@@ -20,6 +20,8 @@ function findById(id){
     .first()
     
 }
-function add(){
-    
+async function add(user){
+    const [id] = await usersDB("users").insert(user, "id")
+
+    return findById(id)
 }
